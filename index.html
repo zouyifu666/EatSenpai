@@ -62,7 +62,7 @@
     <script>
         let url = new URL(window.location.href.toString());
         if (url.searchParams.get("t") === null) {
-            url.searchParams.append("t", new Date().getMilliseconds().toString());
+            url.searchParams.append("t", new Date().getTime().toString());
             window.location.href = url;
         }
     </script>
