@@ -1,4 +1,4 @@
-var isDesktop = navigator['userAgent'].match(/(ipad|iphone|ipod|android|windows phone)/i) ? false : true;
+var isDesktop = !navigator['userAgent'].match(/(ipad|iphone|ipod|android|windows phone)/i);
 var fontunit = isDesktop ? 20 : ((window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth) / 320) * 10;
 document.write('<style type="text/css">' +
     'html,body {font-size:' + (fontunit < 30 ? fontunit : '30') + 'px;}' +
@@ -117,6 +117,7 @@ function gameInit() {
 }
 
 function gameRestart() {
+    createjs.Sound.stop();
     _gameBBList = [];
     _gameBBListIndex = 0;
     _gameScore = 0;
@@ -148,8 +149,7 @@ function gameOver() {
 function encrypt(text){
 	var encrypt = new JSEncrypt();
     encrypt.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTzGwX6FVKc7rDiyF3H+jKpBlRCV4jOiJ4JR33qZPVXx8ahW6brdBF9H1vdHBAyO6AeYBumKIyunXP9xzvs1qJdRNhNoVwHCwGDu7TA+U4M7G9FArDG0Y6k4LbS0Ks9zeRBMiWkW53yQlPshhtOxXCuZZOMLqk1vEvTCODYYqX5QIDAQAB");
-    var data = encrypt.encrypt(text);
-    return data;
+    return encrypt.encrypt(text);
   }
 
 function SubmitResults() {
