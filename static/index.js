@@ -1,4 +1,4 @@
-var isDesktop = !navigator['userAgent'].match(/(ipad|iphone|ipod|android|windows phone)/i);
+var isDesktop = navigator['userAgent'].match(/(ipad|iphone|ipod|android|windows phone)/i) ? false : true;
 var fontunit = isDesktop ? 20 : ((window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth) / 320) * 10;
 document.write('<style type="text/css">' +
     'html,body {font-size:' + (fontunit < 30 ? fontunit : '30') + 'px;}' +
