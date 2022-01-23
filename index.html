@@ -61,11 +61,15 @@
     </div>
 
     <script>
-        let url = new URL(window.location.href.toString());
-        if (url.searchParams.get("t") === null) {
-            url.searchParams.append("t", new Date().getTime().toString());
-            window.location.href = url;
-        }
+        (function() {
+            let url = new URL(window.location.href.toString());
+            let t = url.searchParams.get("t");
+            let curr = new Date().getTime();
+            if (t === null || Math.abs(parseInt(t) - curr) > 10000) {
+                url.searchParams.append("t", curr.toString());
+                window.location.href = url;
+            }
+        })()
     </script>
 </body>
 
