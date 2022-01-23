@@ -156,12 +156,12 @@ function SubmitResults() {
     var system = "其他操作系统";
     var area = "异世界";
     if (document.getElementById("username").value) {
-        if (navigator.appVersion.indexOf("Win") != -1) system = "Windows";
-        if (navigator.appVersion.indexOf("Mac") != -1) system = "Macintosh";
-        if (navigator.appVersion.indexOf("Linux") != -1) system = "Linux";
-        if (navigator.appVersion.indexOf("Android") != -1) system = "Android";
-        if (navigator.appVersion.indexOf("like Mac") != -1) system = "iOS";
-        if (returnCitySN['cname']) { area = returnCitySN['cname'] };
+        if (navigator.appVersion.indexOf("Win") !== -1) system = "Windows";
+        if (navigator.appVersion.indexOf("Mac") !== -1) system = "Macintosh";
+        if (navigator.appVersion.indexOf("Linux") !== -1) system = "Linux";
+        if (navigator.appVersion.indexOf("Android") !== -1) system = "Android";
+        if (navigator.appVersion.indexOf("like Mac") !== -1) system = "iOS";
+        if (returnCitySN['cname']) { area = returnCitySN['cname'] }
         var httpRequest = new XMLHttpRequest();
         httpRequest.open('POST', './SubmitResults.php', true);
         httpRequest.setRequestHeader("Content-type", "application/json");
@@ -200,7 +200,7 @@ function refreshGameLayer(box, loop, offset) {
         rstyle.width = blockSize + 'px';
         rstyle.height = blockSize + 'px';
         r.className = r.className.replace(_clearttClsReg, '');
-        if (i == j) {
+        if (i === j) {
             _gameBBList.push({
                 cell: i % 4,
                 id: r.id
@@ -341,11 +341,13 @@ function shareText(score) {
         return '倒计时多了' + ((deviation_time / 1000) - 20).toFixed(2) + "s";
     }
     SubmitResults();
-    if (score <= 49) return '试着好好练一下？';
-    if (score <= 99) return 'TCL';
-    if (score <= 149) return 'TQL';
-    if (score <= 199) return '您';
-    return '人？';
+
+    if (score === 114) return '哼哼哼啊啊啊啊啊啊啊啊';
+
+    if (score <= 49) return '人间至屑';
+    if (score <= 99) return '斯国一(迫真)';
+    if (score <= 149) return 'sodayo';
+    return '压力马斯内';
 }
 
 function toStr(obj) {
@@ -354,7 +356,6 @@ function toStr(obj) {
     } else {
         return obj;
     }
-    return '';
 }
 
 function cookie(name, value, time) {
