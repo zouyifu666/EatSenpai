@@ -91,14 +91,15 @@ function countBlockSize() {
     blockSize = body.offsetWidth / 4;
     body.style.height = window.innerHeight + 'px';
     GameLayerBG.style.height = window.innerHeight + 'px';
-    touchArea[0] = window.innerHeight - blockSize * 0;
+    touchArea[0] = window.innerHeight;
     touchArea[1] = window.innerHeight - blockSize * 3;
 }
 var _gameBBList = [],
     _gameBBListIndex = 0,
     _gameOver = false,
     _gameStart = false,
-    _gameTime, _gameTimeNum, _gameScore;
+    _gameTime, _gameTimeNum, _gameScore,
+    _date1;
 
 function gameInit() {
     createjs.Sound.registerSound({
@@ -252,8 +253,8 @@ function gameTapEvent(e) {
     if (y > touchArea[0] || y < touchArea[1]) {
         return false;
     }
-    if ((p.id == tar.id && tar.notEmpty) || (p.cell == 0 && x < blockSize) || (p.cell == 1 && x > blockSize && x < 2 *
-        blockSize) || (p.cell == 2 && x > 2 * blockSize && x < 3 * blockSize) || (p.cell == 3 && x > 3 * blockSize)) {
+    if ((p.id === tar.id && tar.notEmpty) || (p.cell === 0 && x < blockSize) || (p.cell === 1 && x > blockSize && x < 2 *
+        blockSize) || (p.cell === 2 && x > 2 * blockSize && x < 3 * blockSize) || (p.cell === 3 && x > 3 * blockSize)) {
         if (!_gameStart) {
             gameStart();
         }
@@ -409,9 +410,5 @@ function goRank() {
     }
     window.location.href=link;
 }
+
 console.log("不修改，好嘛？乱传又有什么用呢？(ˉ▽ˉ；)...")
-document.onkeydown = function (e) {
-    if (e.keyCode == 123) {
-        return false
-    }
-};
